@@ -8,14 +8,17 @@ int cbinsearch(int* arr, int size, int value) {
     if (*(arr + middle) == value) {
       res += 1;
       int middle1 = middle;
-      while ((*(arr + middle + 1)) == value) {
-        res += 1;
-        middle += 1;
+      if (middle != size - 1) {
+        while ((*(arr + middle + 1)) == value) {
+          res += 1;
+          middle += 1;
+        }
       }
-      if (middle) {
+      if (middle1) {
         while ((*(arr + middle1 - 1)) == value) {
           res += 1;
           middle1 -= 1;
+          if (middle1 == 0) break;
         }
       }
       return res;
